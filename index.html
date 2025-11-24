@@ -21,13 +21,16 @@
     </style>
 </head>
 <body>
+    <!-- Link para pular direto para o conteúdo principal (ajuda quem navega por teclado) -->
+    <a href="#conteudoPrincipal" class="visually-hidden-focusable">Pular para o conteúdo principal</a>
+
     <header class="fixed-top bg-light border-bottom">
         <div class="container py-2">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
                 <h1 class="h3 mb-2 mb-md-0">PetShop Online</h1>
 
                 <nav class="nav" aria-label="Navegação principal">
-                    <a class="nav-link" href="index.html">Início</a>
+                    <a class="nav-link" href="index.html" aria-current="page">Início</a>
                     <a class="nav-link" href="produtos.html">Produtos</a>
                     <a class="nav-link" href="servicos.html">Serviços</a>
                     <a class="nav-link" href="contato.html">Contato</a>
@@ -36,20 +39,26 @@
         </div>
     </header>
 
-    <main class="container mt-4 mb-5">
+    <main id="conteudoPrincipal" class="container mt-4 mb-5" role="main">
         <section class="mb-4">
             <h2>Bem-vindo ao nosso PetShop!</h2>
             <p>
                 Aqui você encontra produtos e serviços para o seu melhor amigo.
-                <span id="mensagemHorario" class="fw-semibold"></span>
+                <!-- aria-live para leitores de tela perceberem a mudança da mensagem -->
+                <span id="mensagemHorario" class="fw-semibold" aria-live="polite"></span>
             </p>
         </section>
 
         <!-- Carrossel Bootstrap -->
-        <section class="mb-5">
-            <h3 class="mb-3">Destaques</h3>
+        <section class="mb-5" aria-labelledby="tituloDestaques">
+            <h3 id="tituloDestaques" class="mb-3">Destaques</h3>
 
-            <div id="carouselDestaques" class="carousel slide" data-bs-ride="carousel" aria-label="Destaques do PetShop">
+            <div
+                id="carouselDestaques"
+                class="carousel slide"
+                data-bs-ride="carousel"
+                aria-label="Destaques do PetShop"
+            >
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselDestaques" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselDestaques" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -79,11 +88,11 @@
 
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestaques" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
+                    <span class="visually-hidden">Slide anterior</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselDestaques" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Próximo</span>
+                    <span class="visually-hidden">Próximo slide</span>
                 </button>
             </div>
         </section>
@@ -101,15 +110,13 @@
     <footer class="bg-light border-top mt-auto">
         <div class="container py-3">
             <p class="mb-0">Projeto PUCRS</p>
-            <p class="mb-0">Contato: contato@petshop.com.br</p>
-            <p class="mb-0">Ano atual: <span id="anoAtual"></span></p>
+            <p class="mb-0">Contato: <a href="mailto:contato@petshop.com.br">contato@petshop.com.br</a></p>
+            <p class="mb-0">Ano atual: <span id="anoAtual" aria-live="polite"></span></p>
         </div>
     </footer>
 
-    <!-- Bootstrap JS (inclui Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- JavaScript próprio (funções temporais) -->
     <script>
         function atualizarMensagemHorario() {
             const agora = new Date();

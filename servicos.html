@@ -27,6 +27,8 @@
     </style>
 </head>
 <body>
+<a href="#conteudoPrincipal" class="visually-hidden-focusable">Pular para o conteúdo principal</a>
+
 <header class="fixed-top bg-light border-bottom">
     <div class="container py-2">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
@@ -34,16 +36,16 @@
             <nav class="nav" aria-label="Navegação principal">
                 <a class="nav-link" href="index.html">Início</a>
                 <a class="nav-link" href="produtos.html">Produtos</a>
-                <a class="nav-link" href="servicos.html">Serviços</a>
+                <a class="nav-link" href="servicos.html" aria-current="page">Serviços</a>
                 <a class="nav-link" href="contato.html">Contato</a>
             </nav>
         </div>
     </div>
 </header>
 
-<main class="container mt-4 mb-5">
-    <section class="mb-4">
-        <h2>Banho e Tosa</h2>
+<main id="conteudoPrincipal" class="container mt-4 mb-5" role="main">
+    <section class="mb-4" aria-labelledby="tituloBanhoTosa">
+        <h2 id="tituloBanhoTosa">Banho e Tosa</h2>
         <ul>
             <li>
                 <p>Banho completo — R$ 50,00</p>
@@ -55,18 +57,22 @@
             </li>
         </ul>
         <p class="text-muted">
-            Hoje é <span id="dataHoje"></span>. Agende o melhor horário para o seu pet!
+            Hoje é <span id="dataHoje" aria-live="polite"></span>. Agende o melhor horário para o seu pet!
         </p>
     </section>
 
     <!-- Formulário de cadastro do cliente e do pet + agendamento -->
-    <section>
-        <h2>Cadastro e agendamento</h2>
+    <section aria-labelledby="tituloCadastroAgendamento">
+        <h2 id="tituloCadastroAgendamento">Cadastro e agendamento</h2>
         <p>
             Preencha os dados abaixo para cadastrar o cliente, o pet e agendar o serviço de banho ou tosa.
         </p>
 
-        <form>
+        <form aria-describedby="descricaoFormularioServicos">
+            <p id="descricaoFormularioServicos" class="visually-hidden">
+                Formulário para cadastrar cliente, pet e agendar banho ou tosa, com ou sem tele-busca.
+            </p>
+
             <fieldset>
                 <legend>Dados do cliente</legend>
 
@@ -78,6 +84,7 @@
                         id="nomeCliente"
                         name="nomeCliente"
                         placeholder="Informe o nome completo"
+                        autocomplete="name"
                         required
                     >
                 </div>
@@ -90,6 +97,7 @@
                         id="enderecoCliente"
                         name="enderecoCliente"
                         placeholder="Rua, número, bairro, cidade"
+                        autocomplete="street-address"
                         required
                     >
                 </div>
@@ -103,6 +111,8 @@
                             id="cpfCliente"
                             name="cpfCliente"
                             placeholder="000.000.000-00"
+                            inputmode="numeric"
+                            autocomplete="off"
                             required
                         >
                     </div>
@@ -114,6 +124,7 @@
                             id="telefoneCliente"
                             name="telefoneCliente"
                             placeholder="(51) 99999-9999"
+                            autocomplete="tel"
                             required
                         >
                     </div>
@@ -125,6 +136,7 @@
                             id="emailCliente"
                             name="emailCliente"
                             placeholder="seuemail@exemplo.com"
+                            autocomplete="email"
                             required
                         >
                     </div>
@@ -192,6 +204,7 @@
                             id="nomePet"
                             name="nomePet"
                             placeholder="Nome do pet"
+                            autocomplete="off"
                             required
                         >
                     </div>
@@ -203,6 +216,7 @@
                             id="racaPet"
                             name="racaPet"
                             placeholder="Raça do pet"
+                            autocomplete="off"
                             required
                         >
                     </div>
@@ -221,7 +235,6 @@
                 </div>
             </fieldset>
 
-            <!-- Escolha do serviço e agendamento -->
             <fieldset>
                 <legend>Serviço e agendamento</legend>
 
@@ -312,9 +325,7 @@
     </div>
 </footer>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 
 <script>
     function atualizarDataHoje() {
