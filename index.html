@@ -108,15 +108,27 @@
     </main>
 
     <footer class="bg-light border-top mt-auto">
-        <div class="container py-3">
-            <p class="mb-0">Projeto PUCRS</p>
-            <p class="mb-0">Contato: <a href="mailto:contato@petshop.com.br">contato@petshop.com.br</a></p>
-            <p class="mb-0">Ano atual: <span id="anoAtual" aria-live="polite"></span></p>
+        <div class="container py-3 text-center">
+
+            <p class="mb-1 fw-semibold">PetShop Online</p>
+
+            <p class="mb-1">
+                <a href="mailto:contato@petshop.com.br" class="text-decoration-none text-dark">
+                    contato@petshop.com.br
+                </a>
+                ·
+                <a href="tel:+5551999999999" class="text-decoration-none text-dark">
+                    (51) 99999-9999
+                </a>
+            </p>
+
+            <p class="mb-2">Porto Alegre · RS</p>
+
+            <p class="small text-muted mb-0">
+                &copy; <span id="anoAtualRodape"></span> PetShop Online — Todos os direitos reservados.
+            </p>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
     <script>
         function atualizarMensagemHorario() {
             const agora = new Date();
